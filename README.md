@@ -9,7 +9,7 @@ Contact: [Frederic Brenner](mailto:frederic.brenner@tum.de)
 Contact: [Julian Kreibich](mailto:julian.kreibich@tum.de)
 
 ## Algorithm usage
-The python environment is saved as conda environment "environment.yml" in the folder "python_environment"
+The python environment is saved as conda environment "environment.yml" in the folder </python_environment/>
 
 Alternatively the necessary libraries are listed in the file "Libraries.txt" in the same folder
 
@@ -19,6 +19,12 @@ Data source for map: Bayerische Straßenbauverwaltung - BAYSIS (https://www.bays
 
 Licence for BAYSIS map: Creative Commons Namensnennung 4.0 Lizenz
 
+Input data source: own data recorded with different smartphones from real test drives in Munich
+
+The first test drive (46 min) is included as an example at </data/measurements/Audi_A3/>
+
+The corresponding true lane maneuvers and general maneuver table are listed as excel sheets at </data/ground_truth_lane_changes/>
+
 
 ### 1. Import dataset
 At first the measurement dataset must be defined
@@ -26,6 +32,7 @@ At first the measurement dataset must be defined
 The dataset is loaded with the import_to_main.py script into the project
 
 This script also ensures the correct format
+
 
 ### 2. Run main script 
 The main script (main.py) runs the complete modular algorithm for map matching and lane matching
@@ -39,15 +46,14 @@ The important results (progress, street matching, accuracy) are shown in the com
 
 The algorithm result (matched roads and lanes) is saved as a pandas Dataframe pickled in pathTaken.pkl
 
-Further information plots like the street map, matching etc. can be taken from the folder data/map_plots
+Further information plots like the street map, matching etc. can be taken from the folder </data/map_plots/>
 
-Further the street usage is saved in digital_map/street_usage.txt
+A list of all matched streets is saved in </digital_map/street_usage.txt>
 
 
 ## Overview
 This work is divided into the modules data configuration, main code and merged utils
 
-For multiple measurements the main_multi.py script can be used but is has the same algorithm as main.py implemented
 
 ## Data and configuration
 
@@ -84,7 +90,7 @@ This module contains the map matching from coordinates to street
 It was originally implemented as Hidden Markov Model but is now a linear model
 
 ### Lane module
-This module contains the map matching from GNSS and ACC data to lane probability
+This module contains the map matching from GNSS and IMU (acceleration) data to lane probability
 
 It also contains the sensor fusion (combine_prob.py)
 
@@ -100,10 +106,9 @@ This module contains several small scripts used in the main algorithm
 This module contains different filters for data preprocessing
 
 ### Sine filter module
-This module contains the custom sine curve used for lane change detection on acc signal.
+This module contains the custom sine curve used for lane change detection on acceleration data.
 The custom curve is shown by running the script show_custom_sine_filter.py.
 This is the optimum curve based on the collected ground truth data sets in this project.
-
 
 
 ## The following modules are not included in this extract
@@ -113,7 +118,7 @@ and the script for analyzing multiple datasets (import + main function in a loop
 If you want to gain insight in these modules, feel free to contact the contributors (listed at the top)
 
 ### Optimization module
-This module is used for parameter-tuning of GNSS and ACC parameters
+This module is used for parameter-tuning of GNSS and acceleration parameters
 
 ### Tests module
 This module contains scripts used for testing the algorithm and specific dataset values
